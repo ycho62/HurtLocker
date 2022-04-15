@@ -1,5 +1,8 @@
 import org.apache.commons.io.IOUtils;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -11,7 +14,17 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
-        System.out.println(output);
+        JerkSon jerkSon = new JerkSon();
+        System.out.println(jerkSon.splitRawData(output));
+
+        System.out.println(jerkSon.getValueName(output, "name", ";"));
+        System.out.println(jerkSon.getValueName(output, "type", ";^%*!@"));
+        System.out.println(jerkSon.getValueName(output, "price", ";"));
+        System.out.println(jerkSon.getValueName(output, "expiration", "#"));
+
+
 
     }
+
+
 }
